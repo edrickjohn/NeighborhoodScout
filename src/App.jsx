@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  return <div className="bg-primary min-h-screen">Neigborhood</div>;
+  return <div className="bg-red-500 min-h-screen">Neigborhood</div>;
 }
 
 export default App;
