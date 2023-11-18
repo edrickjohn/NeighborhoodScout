@@ -11,7 +11,7 @@ const AuthLayout = ({ children }) => {
           alt="logo"
           className="h-20 bg-white"
           onClick={(e) => {
-            navigate("/");
+            navigate("/home");
           }}
         />
       </nav>
