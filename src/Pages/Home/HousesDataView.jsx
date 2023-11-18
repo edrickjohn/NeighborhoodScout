@@ -212,7 +212,7 @@ export default function HousesDataView() {
             )}
           </div>
           <Image
-            src={`/houses/${product.image}.jpg`}
+            src={`houses/${product.image}.jpg`}
             alt={`${product.image}`}
             preview
             imageClassName=" object-cover h-[300px] w-[300px]  rounded-lg  "
