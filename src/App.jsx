@@ -8,7 +8,7 @@ import Home from "./Pages/Home/Home";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename="/neighborhood-scout">
         <Routes>
           <Route index path="/" element={<Login />}></Route>
           <Route index path="/home" element={<Home />}></Route>
