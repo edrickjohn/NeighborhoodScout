@@ -7,6 +7,7 @@ export const houses = [
     school_rating: 5,
     amenities: ["Swimming Pool"],
     transportations: ["Bus", "Subway", "Tricycle", "Grab"],
+    saved: 1,
   },
   {
     id: crypto.randomUUID(),
@@ -16,6 +17,7 @@ export const houses = [
     school_rating: 3,
     amenities: [],
     transportations: ["Tricycle", "Grab"],
+    saved: 0,
   },
   {
     id: crypto.randomUUID(),
@@ -25,6 +27,7 @@ export const houses = [
     school_rating: 0,
     amenities: ["Gym"],
     transportations: ["Subway", "Tricycle"],
+    saved: 0,
   },
   {
     id: crypto.randomUUID(),
@@ -34,6 +37,7 @@ export const houses = [
     school_rating: 5,
     amenities: ["Swimming Pool", "Gym"],
     transportations: ["Bus", "Subway", "Tricycle", "Grab"],
+    saved: 0,
   },
   {
     id: crypto.randomUUID(),
@@ -43,6 +47,7 @@ export const houses = [
     school_rating: 3,
     amenities: ["Gym"],
     transportations: [],
+    saved: 0,
   },
   {
     id: crypto.randomUUID(),
@@ -52,6 +57,7 @@ export const houses = [
     school_rating: 4,
     amenities: ["Swimming Pool", "Gym"],
     transportations: ["Bus", "Subway", "Grab"],
+    saved: 0,
   },
   {
     id: crypto.randomUUID(),
@@ -61,6 +67,7 @@ export const houses = [
     school_rating: 3,
     amenities: ["Swimming Pool", "Gym"],
     transportations: ["Tricycle"],
+    saved: 0,
   },
   {
     id: crypto.randomUUID(),
@@ -70,6 +77,7 @@ export const houses = [
     school_rating: 5,
     amenities: ["Swimming Pool", "Gym"],
     transportations: ["Subway", "Tricycle", "Grab"],
+    saved: 0,
   },
   {
     id: crypto.randomUUID(),
@@ -79,5 +87,6 @@ export const houses = [
     school_rating: 5,
     amenities: ["Swimming Pool", "Gym"],
     transportations: ["Bus", , "Grab"],
+    saved: 0,
   },
 ];

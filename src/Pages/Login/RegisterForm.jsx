@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { KeyRound, Mail, LogIn } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate("/home");
   };
   return (
     <form className=" flex flex-col gap-2 w-full" onSubmit={handleSubmit}>
@@ -27,6 +30,7 @@ const RegisterForm = () => {
       <span className="p-input-icon-left ">
         <KeyRound className="h-4 w-4" />
         <InputText
+          type="password"
           className="p-inputtext-sm w-full"
           placeholder="Password"
           value={password}
@@ -37,6 +41,7 @@ const RegisterForm = () => {
       <span className="p-input-icon-left ">
         <KeyRound className="h-4 w-4" />
         <InputText
+          type="password"
           className="p-inputtext-sm w-full"
           placeholder="Confirm Password"
           value={confirmPassword}

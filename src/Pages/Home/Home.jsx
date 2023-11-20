@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthLayout from "../../Layouts/AuthLayout";
 import { InputText } from "primereact/inputtext";
 import { Search } from "lucide-react";
+
 import HousesDataView from "./HousesDataView";
+import { useHouses } from "../../contexts/HousesContext";
 const Home = () => {
-  const [seachKey, setSearchKey] = useState("");
+  const { data, setData } = useHouses();
+  // const newData = data.filter((house) => {
+  //   return house.saved == false;
+  // });
+
   return (
     <AuthLayout className="shadow-md ">
-      <HousesDataView />
-
-      {/* <span className="p-input-icon-left ">
-        <Search className="h-4 w-4" />
-        <InputText
-          type="text"
-          className="p-inputtext-sm  w-full"
-          placeholder="Email"
-        />
-      </span> */}
+      <HousesDataView api_houses={data} />
     </AuthLayout>
   );
 };

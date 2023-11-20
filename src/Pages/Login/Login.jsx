@@ -5,11 +5,13 @@ import { Button } from "primereact/button";
 
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import AppLogo from "../../Components/AppLogo";
 const Login = () => {
   const [module, setModule] = useState("Login");
   return (
     <GuestLayout>
       <section className="bg-secondary  w-[400px] rounded-md  text-white p-5 ">
+        <AppLogo className={"h-32 mx-auto bg-white rounded-full mb-4"} />
         <div className="flex justify-evenly  font-bold">
           <Button
             label="LOGIN"
