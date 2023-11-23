@@ -3,7 +3,7 @@ import { Tag } from "primereact/tag";
 import { Image } from "primereact/image";
 import { Tooltip } from "primereact/tooltip";
 import { Dropdown } from "primereact/dropdown";
-import { BookmarkCheck, BookmarkX } from "lucide-react";
+import { BookmarkCheck, Bed } from "lucide-react";
 import { Rating } from "primereact/rating";
 import { Drama, School } from "lucide-react";
 import { useHouses } from "../../contexts/HousesContext";
@@ -110,7 +110,27 @@ const HouseCard = ({ house }) => {
               mouseTrackLeft={10}
               className="!text-xs"
             />
-
+            <Tooltip
+              target={`.bedroom-icon-${house.id}`}
+              mouseTrack
+              mouseTrackLeft={10}
+              className="!text-xs"
+            />
+            <i
+              className={`bedroom-icon-${house.id}  `}
+              data-pr-tooltip="Bedrooms"
+              data-pr-position="right"
+              data-pr-at="right+5 top"
+              data-pr-my="left center-2"
+            >
+              <Rating
+                value={house.bedrooms}
+                readOnly
+                cancel={false}
+                onIcon={<Bed className="h-4 w-4 text-green-500" />}
+                offIcon={<Bed className="h-4 w-4 text-gray-300" />}
+              />
+            </i>
             <i
               className={`crime-icon-${house.id}  `}
               data-pr-tooltip="Crime Rating"

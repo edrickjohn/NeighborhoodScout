@@ -3,7 +3,7 @@ import { Tag } from "primereact/tag";
 import { Image } from "primereact/image";
 import { Tooltip } from "primereact/tooltip";
 import { Dropdown } from "primereact/dropdown";
-import { BookmarkCheck, BookmarkX } from "lucide-react";
+import { BookmarkCheck, Bed } from "lucide-react";
 import { Rating } from "primereact/rating";
 import { Drama, School } from "lucide-react";
 import { useHouses } from "../../contexts/HousesContext";
@@ -66,7 +66,7 @@ const HouseCardList = ({ house }) => {
 
             <div>
               <BookmarkCheck
-                className={`cursor-pointer h-8 w-8 ${
+                className={`cursor-pointer h-4 w-4 ${
                   house.saved ? "text-green-500" : "hover:text-green-500"
                 }`}
                 onClick={(e) => {
@@ -92,17 +92,18 @@ const HouseCardList = ({ house }) => {
           </div>
 
           <div className="text-xs">ID: {house.id}</div>
-          <div className="flex justify-between">
-            <div
-              className="font-bold text-gray-900 text-lg hover:underline hover:text-blue-500 cursor-pointer"
-              onClick={(e) => {
-                navigate(`/view/${house.id}`);
-              }}
-            >
-              {house.address}
-            </div>
+
+          <div
+            className="font-bold text-gray-900 text-lg hover:underline hover:text-blue-500 cursor-pointer"
+            onClick={(e) => {
+              navigate(`/view/${house.id}`);
+            }}
+          >
+            {house.address}
           </div>
-          <div className="flex flex-col gap-1 absolute bottom-0 mb-3.5">
+
+          <p className="tracking-wider">{house.description}</p>
+          <div className="flex flex-col gap-1 ">
             <Tooltip
               target={`.crime-icon-${house.id}`}
               mouseTrack
@@ -115,7 +116,27 @@ const HouseCardList = ({ house }) => {
               mouseTrackLeft={10}
               className="!text-xs"
             />
-
+            <Tooltip
+              target={`.bedroom-icon-${house.id}`}
+              mouseTrack
+              mouseTrackLeft={10}
+              className="!text-xs"
+            />
+            <i
+              className={`bedroom-icon-${house.id}  `}
+              data-pr-tooltip="Bedrooms"
+              data-pr-position="right"
+              data-pr-at="right+5 top"
+              data-pr-my="left center-2"
+            >
+              <Rating
+                value={house.bedrooms}
+                readOnly
+                cancel={false}
+                onIcon={<Bed className="h-4 w-4 text-green-500" />}
+                offIcon={<Bed className="h-4 w-4 text-gray-300" />}
+              />
+            </i>
             <i
               className={`crime-icon-${house.id}  `}
               data-pr-tooltip="Crime Rating"
@@ -127,8 +148,8 @@ const HouseCardList = ({ house }) => {
                 value={house.crime_rating}
                 readOnly
                 cancel={false}
-                onIcon={<Drama className="h-8 w-8 text-red-500" />}
-                offIcon={<Drama className="h-8 w-8 text-gray-300" />}
+                onIcon={<Drama className="h-4 w-4 text-red-500" />}
+                offIcon={<Drama className="h-4 w-4 text-gray-300" />}
               />
             </i>
 
@@ -143,8 +164,8 @@ const HouseCardList = ({ house }) => {
                 value={house.school_rating}
                 readOnly
                 cancel={false}
-                onIcon={<School className="h-8 w-8 text-green-500" />}
-                offIcon={<School className="h-8 w-8 text-gray-300" />}
+                onIcon={<School className="h-4 w-4 text-green-500" />}
+                offIcon={<School className="h-4 w-4 text-gray-300" />}
               />
             </i>
           </div>

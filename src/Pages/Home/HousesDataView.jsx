@@ -8,7 +8,7 @@ import { Tag } from "primereact/tag";
 import { Image } from "primereact/image";
 import { Tooltip } from "primereact/tooltip";
 
-import { Drama, School } from "lucide-react";
+import { Drama, School, Bed } from "lucide-react";
 import { Fieldset } from "primereact/fieldset";
 import { MultiSelect } from "primereact/multiselect";
 import HouseCard from "./HouseCard";
@@ -20,6 +20,7 @@ export default function HousesDataView({ api_houses }) {
   const [sortOrder, setSortOrder] = useState(0);
   const [sortField, setSortField] = useState("");
   const defaultFilter = {
+    bedrooms: null,
     school_rating: null,
     crime_rating: null,
     transportations: [],
@@ -33,6 +34,27 @@ export default function HousesDataView({ api_houses }) {
       <div>
         <div className="flex md:flex-nowrap flex-wrap gap-2 items-end justify-between ">
           <div className="flex flex-wrap gap-2 items-end w-full ">
+            <Fieldset
+              legend="Bedrooms"
+              pt={{
+                legendTitle: { className: "!text-xs" },
+                content: {
+                  className: "!p-0 !px-2 !py-1",
+                },
+              }}
+            >
+              <Rating
+                value={filter.bedrooms}
+                onIcon={<Bed className="h-4 w-4 text-green-500" />}
+                offIcon={<Bed className="h-4 w-4 text-gray-300" />}
+                onChange={(e) => {
+                  setFilter({
+                    ...filter,
+                    bedrooms: e.value,
+                  });
+                }}
+              />
+            </Fieldset>
             <Fieldset
               legend="School Rating"
               pt={{
@@ -75,6 +97,7 @@ export default function HousesDataView({ api_houses }) {
                 }}
               />
             </Fieldset>
+
             <MultiSelect
               value={filter.transportations}
               onChange={(e) => {
@@ -153,16 +176,18 @@ export default function HousesDataView({ api_houses }) {
 
   useEffect(() => {
     if (
+      filter.bedrooms === null &&
       filter.school_rating === null &&
       filter.crime_rating === null &&
       filter.transportations.length === 0 &&
       filter.amenities.length === 0
     ) {
       // No filtering needed if all values are null or transportations array is empty
+
       setHouses(api_houses);
     } else {
       setHouses(
-        houses.filter(function (item) {
+        api_houses.filter(function (item) {
           for (var key in filter) {
             if (key === "transportations") {
               // Check if all transportation values are present in the item's transportations array
@@ -190,11 +215,12 @@ export default function HousesDataView({ api_houses }) {
               }
             }
           }
+
           return true;
         })
       );
     }
-  }, [filter, api_houses]);
+  }, [filter]);
   const itemTemplate = (house, layout) => {
     if (!house) {
       return;
